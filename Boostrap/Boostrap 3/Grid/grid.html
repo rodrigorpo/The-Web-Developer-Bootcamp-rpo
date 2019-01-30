@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>My Blog</title>
+	<link rel="stylesheet" type="text/css" href="grid.css">
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+	<style type="text/css">
+		.pink {
+			background: pink;
+			border: 1px solid purple;
+		}
+
+		.orange {
+			background: orange;
+			border: 1px solid red;
+			height: 30px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1 class="container text-center">TESTANDO</h1>
+	<div class="container">
+		<!-- Fill on middle -->
+		Supernatural é uma série de televisão americana de fantasia sombria e urbana criada por Eric Kripke produzida pela
+		Warner Bros. Television em parceria com a
+		Wonderland Sound and Vision, que estreou em 13 de setembro de 2005 na The WB Television Network, e depois tornou-se
+		parte da programação da The CW. A série
+		narra a história de dois irmãos, Sam Winchester e Dean Winchester, interpretados respectivamente por Jared Padalecki
+		e Jensen Ackles, que caçam demônios, fantasmas,
+		monstros e outras criaturas sobrenaturais no mundo.
+	</div>
+	<br />
+	<div class="container-fluid">
+		<!-- Fill completly -->
+		Supernatural é uma série de televisão americana de fantasia sombria e urbana criada por Eric Kripke produzida pela
+		Warner Bros. Television em parceria com a
+		Wonderland Sound and Vision, que estreou em 13 de setembro de 2005 na The WB Television Network, e depois tornou-se
+		parte da programação da The CW. A série
+		narra a história de dois irmãos, Sam Winchester e Dean Winchester, interpretados respectivamente por Jared Padalecki
+		e Jensen Ackles, que caçam demônios, fantasmas,
+		monstros e outras criaturas sobrenaturais no mundo.
+	</div>
+
+	<!-- ====================================== -->
+	<!-- 				OBJECTIVES 				-->
+	<!-- 1. Understand Purpose of Grid System 	-->
+	<!-- 2. Understand the 4 different sizes 	-->
+	<!-- 3. Write Nested Grids 					-->
+	<!-- =====================================	-->
+
+	<!-- Sizes: 
+			xs: mobile size		ex col-xs
+			sm: small size		ex col-sm
+			md: middle size		ex col-md
+			lg: large size		ex col-lg
+		-->
+
+	<div class="container">
+		<!-- 12 units to use by row -->
+		<div class="row">
+			<div class="col-lg-1 col-md-2 pink">COL 1</div>
+			<div class="col-lg-1 col-md-2 pink">COL 1</div>
+			<div class="col-lg-1 col-md-2 pink">COL 1</div>
+			<div class="col-lg-1 col-md-2 pink">COL 1</div>
+			<div class="col-lg-1 col-md-2 pink">COL 1</div>
+			<div class="col-lg-1 col-md-2 pink">COL 1</div>
+			<div class="col-lg-1 col-md-2 pink">COL 1</div>
+			<div class="col-lg-1 col-md-2 pink">COL 1</div>
+			<div class="col-lg-1 col-md-2 pink">COL 1</div>
+			<div class="col-lg-1 col-md-2 pink">COL 1</div>
+			<div class="col-lg-1 col-md-2 pink">COL 1</div>
+			<div class="col-lg-1 col-md-2 pink">COL 1</div>
+		</div>
+
+		<!-- You don't need to specify if the large size is the same on previous one direct, like "middle" 
+				 Either for larger applying to smaller sizes, like small applying to xs (mobile)-->
+
+		<div class="row">
+			<div class="col-md-3 col-sm-6 pink">
+				<div class="row">
+					<!-- Realize that the size of this "divided size" is now full again (12 units) -->
+					<div class="col-lg-6 orange">FIRST HALF</div>
+					<div class="col-lg-6 orange">OTHER HALF</div>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-6 pink">TOUR DATE</div>
+			<div class="col-md-3 col-sm-6 pink">TOUR DATE</div>
+			<div class="col-md-3 col-sm-6 pink">
+				<div class="row">
+					<div class="col-lg-2 orange"></div>
+					<div class="col-lg-2 orange"></div>
+					<div class="col-lg-2 orange"></div>
+					<div class="col-lg-2 orange"></div>
+					<div class="col-lg-2 orange"></div>
+					<div class="col-lg-2 orange"></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-2 orange"></div>
+			<div class="col-lg-2 orange"></div>
+			<div class="col-lg-2 orange"></div>
+			<div class="col-lg-2 orange"></div>
+			<div class="col-lg-2 orange"></div>
+			<div class="col-lg-2 orange"></div>
+		</div>
+	</div>
+</body>
+
+</html>

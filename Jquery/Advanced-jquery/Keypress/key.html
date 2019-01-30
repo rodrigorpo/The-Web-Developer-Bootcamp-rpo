@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Jquery advanced - key</title>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+</head>
+
+<body>
+    <!-- Click events needs to pass a function and do something -->
+    <!-- It can be applied to one element or a group of -->
+
+    <h1>Jquery Events</h1>
+
+    <input type="text">
+
+    <button>Don't Click Me</button>
+    <button>Seriously Dont Click me</button>
+    <button>This is your last warning!</button>
+
+    <script>
+        $("input[type='text']"); // this is more specific and select by the type
+        $("input").keypress(function (event) {
+            if (event.which === 13) { // 13 is the correspond to enter
+                console.log("You pressed enter");
+            }
+        });
+    </script>
+</body>
+
+</html>
