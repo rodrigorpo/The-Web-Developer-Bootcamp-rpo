@@ -88,8 +88,13 @@
     }
 
     $("#reset").on("click", (e) => {
-        initialize();
+        //initialize();
+        openModal();
     });
+
+    this.openModal = () => {
+        
+    }
 
     // Adding class toggle on event click
     // ES6 arrow functions
