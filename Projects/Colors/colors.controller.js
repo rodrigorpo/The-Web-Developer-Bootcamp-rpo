@@ -4,12 +4,20 @@
     const HARD_LEVEL_NUMBER_OF_COLORS = 6;
 
     vm.initialize = () => {
-        $('#message').text('');
-        $('#header').css("background:", "steelblue");
         renderLevel();
     }
 
+    vm.preSetDefault = () => {
+        $('#message').text('');
+        $('#message').addClass("alert-danger");
+        $('#message').removeClass("alert-success");
+        $('#header-color').removeClass("header");
+        $('#header-color').addClass("header");
+        $('#reset').text('NEW COLORS');
+    }
+
     vm.renderLevel = (numberToRender = HARD_LEVEL_NUMBER_OF_COLORS) => {
+        preSetDefault();
         let helper = 0, htmlRender = '';
 
         // Choosing Random Colors and printing the winner one
@@ -72,6 +80,8 @@
 
     vm.winnerChangeStyle = () => {
         $('#message').text('Correct');
+        $('#message').removeClass("alert-danger");
+        $('#message').addClass("alert-success");
         $('#reset').text('PLAY AGAIN?');
         $('.game-element, .header').css(classStylePropertieBuilder(vm.winnerColor));
         $('.game-element').off('click');

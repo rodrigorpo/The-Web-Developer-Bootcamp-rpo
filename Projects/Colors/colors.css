@@ -71,3 +71,7 @@ button:hover {
     color: white;
     background: steelblue;
 }
+
+.audio {
+    position: absolute;
+}
