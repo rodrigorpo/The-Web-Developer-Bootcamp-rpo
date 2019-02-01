@@ -1,0 +1,31 @@
+h1 {
+    color: rgba(00, 255, 00, 0.4);
+    border-color: aqua;
+    border-width: 5px;
+    border-style: solid;
+    width: 250px;
+}
+
+li {
+    color: green;
+}
+
+h4 {
+    color:purple;
+    width: 1000px;
+}
+
+p {
+    color: black;
+    background: blueviolet;
+    width: 100px;
+}
+div {
+    }
+
+body {
+    /* background: url(https://static.scientificamerican.com/sciam/cache/file/E00E5DC5-1F35-4256-9693D7CD448C302B_source.jpg?w=390&h=520&5203D048-9E0A-4AAB-AD0FDD9D17B60C32); */
+    background: green;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

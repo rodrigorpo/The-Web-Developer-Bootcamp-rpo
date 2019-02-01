@@ -1,0 +1,2 @@
+InnerHTML --> propertie render the HTML on the page
+textContent --> treat as a String all content; 

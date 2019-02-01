@@ -1,0 +1,18 @@
+<!DOCTYPE html> --> determina um HTML
+<h1></h1> --> Define um tamanho de texto
+<h2></h2> h3,h4...
+<!-- comentarios -->
+ctrl + / --> cria blocos de comentarios
+<b> ou <strong> --> negrito
+<i> ou <em> --> itálico
+<p> --> parágrafo
+
+<ul> -> Espaço de paragrafo (unordered list)
+<ol> --> lista ordenada inserida com li
+<li> --> lista numa lista ordenada
+<p class="editor-note"> --> define um atributo de p, onde referencia esse objeto pelo nome editor-note]
+
+<div> é um container generico de coisas, que naturalmente separa como um parágrafo (escopo grande) 
+<span> é um container generico que não separa como um parágrafo (inline container)
+
+<img src="something.png"> --> coloca uma imagem na pagina

@@ -1,0 +1,19 @@
+p {
+    font-family: Georgia;
+    font-weight: 100 - 800;
+    line-height: 1.5;
+}
+
+h1 {
+    font-family: Arial;
+    font-size: 50px;
+    color: blueviolet;
+    text-align: right
+}
+.teste{
+    font-family: Arial;
+    font-size: 50px;
+    color: blueviolet;
+    text-align: right;
+    text-decoration: line-through;
+}

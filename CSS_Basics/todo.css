@@ -1,0 +1,17 @@
+body{
+    background: orange;
+    width: 250px;
+}
+
+li {
+    color: red;
+    border: 2px solid red;
+}
+/* Properties refered by id */
+#special {
+    color: purple;
+}
+
+.highlight{
+    color: white;
+}
