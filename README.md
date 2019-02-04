@@ -31,9 +31,15 @@ Say what the step will be
  $ npm install #If necessary 
 ```
 
+## Projects inside
+
+* **Rodrigo Pereira** - [Colors Game](https://rodrigorpo.github.io/The-Web-Developer-Bootcamp-rpo/Projects/Colors/)
+* **Rodrigo Pereira** - [Museum Of Candy](https://rodrigorpo.github.io/The-Web-Developer-Bootcamp-rpo/Projects/Museum_Of_Candy)
+* **Rodrigo Pereira** - [Pattern Project](https://rodrigorpo.github.io/The-Web-Developer-Bootcamp-rpo/Projects/Pattern_Project)
+
 ## Authors
 
-* **Rodrigo Pereira** - *Full job* - [PurpleBooth](https://github.com/rodrigorpo)
+* **Rodrigo Pereira** - *Full job* - [Profile](https://github.com/rodrigorpo)
 
 ## Acknowledgments
 
