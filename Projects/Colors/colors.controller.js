@@ -11,8 +11,7 @@
         $('#message').text('');
         $('#message').addClass("alert-danger");
         $('#message').removeClass("alert-success");
-        $('#header-color').removeClass("header");
-        $('#header-color').addClass("header");
+        $('#header-color').css("background", "steelblue");
         $('#reset').text('NEW COLORS');
     }
 
@@ -37,7 +36,6 @@
 
         // Adding events binding
         setEventBindings()
-
     }
 
     vm.randomColors = (numberOfColors = HARD_LEVEL_NUMBER_OF_COLORS) => {
@@ -85,15 +83,15 @@
         $('#reset').text('PLAY AGAIN?');
         $('.game-element, .header').css(classStylePropertieBuilder(vm.winnerColor));
         $('.game-element').off('click');
+        openModal();
     }
 
     $("#reset").on("click", (e) => {
-        //initialize();
-        openModal();
+        initialize();
     });
 
     this.openModal = () => {
-        
+        // $("#modal").load("modal.html");
     }
 
     // Adding class toggle on event click
