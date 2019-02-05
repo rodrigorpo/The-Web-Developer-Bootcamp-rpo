@@ -43,5 +43,5 @@ Say what the step will be
 
 ## Acknowledgments
 
-* Colt Steele from made this course!
+* Colt Steele for made this course!
 * Inspiration to be a frontend-developer!
