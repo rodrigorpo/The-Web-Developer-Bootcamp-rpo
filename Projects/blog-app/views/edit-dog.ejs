@@ -1,5 +1,29 @@
 <% include partials/header %>
+<style>
+    .btn {
+        border-color: blueviolet;
+        color: blueviolet;
+    }</style>
+<div class="container border border-secondary" style="margin-top: 150px; width: 800px">
+    <div class="container">
+        <h1>New Post</h1>
 
-
+        <form method="PUT">
+            <div class="form-group">
+                <label for="title"><strong>Title</strong></label>
+                <input name="title" type="text" class="form-control" id="title" value="<%= dog.title %>">
+            </div>
+            <div class="form-group">
+                <label for="image"><strong>Image</strong></label>
+                <input name="image" type="text" class="form-control" id="image" value="<%= dog.image %>">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Post Comment</label>
+                <textarea name="body" class="form-control" id="post-comment" rows="7"><%= dog.body %></textarea>
+            </div>
+            <button formaction="/dogs" type="submit" class="btn mb-3">Update Dog<i class="fas fa-chevron-right pl-2"></i></input>
+        </form>
+    </div>
+</div>
 
 <% include partials/footer %>

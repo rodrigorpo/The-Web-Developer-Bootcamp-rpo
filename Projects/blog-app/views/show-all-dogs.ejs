@@ -1,5 +1,54 @@
 <% include partials/header %>
+<style>
+    #banner {
+        margin-top: 90px;
+        height: 150px;
+        width: 600px;
+        display: flex;
+        margin-bottom: 20px;
+        color: blueviolet;
+        border-color: blueviolet;
+    }
+
+    a.btn {
+        border-color: blueviolet;
+        color: blueviolet;
+    }
+</style>
 
 
+<div id="banner" class="container justify-content-center border border-secondary rounded-pill bg-light">
+    <div class=" d-flex flex-row justify-content-center align-items-center">
+        <div class="row align-items-center">
+            <div class="icon"><i class="fas fa-dog fa-5x mr-5"></i></div>
+            <div class="display-3">Dog's Blog</div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container border rounded">
+    <% dogs.forEach(function(dog, index){ %>
+    <div class="container p-2">
+        <div class="d-flex flex-row">
+            <img src="<%=dog.image%>" class="img-thumbnail rounded" style="max-width: 150px; max-height: 150px;">
+            <div class="flex-column pl-4">
+                <h4><strong>
+                        <%=dog.title%></strong>
+                </h4>
+                <h5 class="text-muted">
+                    <%=dog.created%>
+                </h5>
+                <h5 class="text-body">
+                    <%=dog.body%>
+                </h5>
+                <a href="/dogs/<%=dog._id%>" class="btn" method="GET">Read more <i class="fas fa-chevron-right pl-2"></i></a>
+            </div>
+        </div>
+    </div>
+    <%if (index !== (dogs.length -1)) {%>
+    <div class="border-bottom pb-4"></div>
+    <% }}); %>
+</div>
 
 <% include partials/footer %>
