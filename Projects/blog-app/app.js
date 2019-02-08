@@ -89,11 +89,13 @@ app.get("/dogs/new", function (req, res) {
 
 // Create new dog
 app.post("/dogs", function (req, res) {
-    createDog(req.body).resolve("Success").then(
-        findDogs().then((data) => {
-            res.render("show-all-dogs", { dogs: data });
-        })
-    )
+    Dog.create(req.body, (err, result) => {
+        if (!err && result) {            
+            findDogs().then((data) => {
+                res.render("show-all-dogs", { dogs: data });
+            })
+        }
+    });
 });
 
 // Show info about one specific dog
