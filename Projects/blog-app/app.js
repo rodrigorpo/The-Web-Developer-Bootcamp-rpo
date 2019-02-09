@@ -3,11 +3,14 @@ const express = require('express'),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose'),
     moment = require('moment'),
-    methodOverride = require('method-override');
+    methodOverride = require('method-override'),
+    expressSanitizer = require('express-sanitizer');
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(expressSanitizer());
 app.use(methodOverride("_method"));
+
 
 // === MONGOOSE CONFIGURATION ===
 const connectPath = "mongodb://192.168.99.100:27017";
@@ -91,6 +94,7 @@ app.get("/dogs/new", function (req, res) {
 
 // Create new dog
 app.post("/dogs", function (req, res) {
+    req.body.body = req.sanitize(req.body.body);
     Dog.create(req.body, (err, result) => {
         if (!err && result) {
             findDogs().then((data) => {
@@ -116,11 +120,14 @@ app.get("/dogs/:id/edit", function (req, res) {
 
 // Edit a dog
 app.put("/dogs/:id", function (req, res) {
-    updateDog(req.params.id, req.body).then(
-        findDogs().then((data) => {
-            res.render("show-all-dogs", { dogs: data });
-        })
-    );
+    req.body.body = req.sanitize(req.body.body);
+    Dog.update({ _id: req.params.id }, req.body, (err, result) => {
+        if (!err && result) {
+            findDogs().then((data) => {
+                res.render("show-all-dogs", { dogs: data });
+            })
+        }
+    });
 });
 
 // Delete a particular dog, then redirect home
