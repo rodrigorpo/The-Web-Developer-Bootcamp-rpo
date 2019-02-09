@@ -17,13 +17,12 @@
             </h5>
             <div class="d-flex flex-row justify-content-center">
                 <a href="/dogs/<%=dog._id%>/edit" class="btn btn-outline-warning mr-4">Update Dog</a>
-                <form method="DELETE">
-                    <button href="/dogs/<%=dog._id%>" class="btn btn-outline-danger ml-4">Delete Dog</button>
+                <form method="POST" action="/dogs/<%=dog._id%>?_method=DELETE">
+                    <button type="submit" class="btn btn-outline-danger ml-4">Delete Dog</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
 </div>
-
 <% include partials/footer %>

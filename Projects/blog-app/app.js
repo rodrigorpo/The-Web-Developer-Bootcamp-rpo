@@ -2,10 +2,12 @@ const express = require('express'),
     app = express(),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose'),
-    moment = require('moment');
+    moment = require('moment'),
+    methodOverride = require('method-override');
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(methodOverride("_method"));
 
 // === MONGOOSE CONFIGURATION ===
 const connectPath = "mongodb://192.168.99.100:27017";
@@ -90,7 +92,7 @@ app.get("/dogs/new", function (req, res) {
 // Create new dog
 app.post("/dogs", function (req, res) {
     Dog.create(req.body, (err, result) => {
-        if (!err && result) {            
+        if (!err && result) {
             findDogs().then((data) => {
                 res.render("show-all-dogs", { dogs: data });
             })
