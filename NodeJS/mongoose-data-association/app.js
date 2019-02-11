@@ -3,6 +3,9 @@ const express = require('express'),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose');
 
+const Post = require('./models/post');
+const User = require('./models/user');
+
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(express.static("public"));
@@ -14,11 +17,6 @@ mongoose.connect(`${connectPath}/${DATABASE}`);
 
 // ==> SCHEMAS SETUP
 
-// Posts
-const postSchema = new mongoose.Schema({
-    title: String,
-    content: String
-});
 
 // // Users by creating posts inside
 // const userSchema = new mongoose.Schema({
@@ -28,21 +26,6 @@ const postSchema = new mongoose.Schema({
 // });
 
 // Users using reference
-const userSchema = new mongoose.Schema({
-    name: String,
-    email: String,
-    posts: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Post"
-        }
-    ]
-});
-
-const User = mongoose.model("User", userSchema);
-
-
-const PostModel = mongoose.model("Post", postSchema);
 
 // User.create({
 //     name: "Rodrigo Pereira", email: "rodrigorpogo@gmail.com", posts: []
@@ -52,23 +35,23 @@ const PostModel = mongoose.model("Post", postSchema);
 //     }
 // });
 
-// PostModel.create({
-//     title: "Um dia em BH!", content: "Visitando ço!"
-// }, (err, post) => {
-//     if (!err && post) {
-//         User.findOne({email: "rodrigorpogo@gmail.com"}, function(err, userFound) {
-//             if(!err && userFound){
-//                 console.log(userFound);
-//                 userFound.posts.push(post);
-//                 userFound.save(function(err, data){
-//                     if(!err && data){
-//                         console.log(data);
-//                     }
-//                 });
-//             }
-//         });
-//     }
-// });
+Post.create({
+    title: "Um dia em BH!", content: "Visitando ço!"
+}, (err, post) => {
+    if (!err && post) {
+        User.findOne({ email: "rodrigorpogo@gmail.com" }, function (err, userFound) {
+            if (!err && userFound) {
+                console.log(userFound);
+                userFound.posts.push(post);
+                userFound.save(function (err, data) {
+                    if (!err && data) {
+                        console.log(data);
+                    }
+                });
+            }
+        });
+    }
+});
 
 // Populate the Object searching the Objecte reference by ID - posts is a variable inside User's Document
 User.findOne({ email: "rodrigorpogo@gmail.com" }).populate("posts").exec(function (err, user) {
