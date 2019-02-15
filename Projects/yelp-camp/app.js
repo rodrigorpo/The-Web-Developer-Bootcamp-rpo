@@ -1,81 +1,49 @@
 // === Default imports ===
 const express = require('express'),
     app = express(),
-    bodyParser = require('body-parser');
+    bodyParser = require('body-parser'),
+    passport = require('passport'),
+    LocalStrategy = require('passport-local');
+
+// === Importing routes ===
+const indexRoutes = require('./routes/index');
+const campgroundRoutes = require('./routes/campgrounds');
+const commentRoutes = require('./routes/comments');
 
 // === Openning connection to mongoose ===
 require('./configuration/mongoose-connection');
 
 // === Importing models ===
-const Campground = require('./models/campground');
-const Comment = require('./models/comment');
+const User = require('./models/user');
 const seedDB = require('./configuration/seeds');
 
-// Configuring Express
+// === Configuring Express === 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(express.static("public"));
 app.use(express.static(__dirname + "/public")); // referes where the script is running
+// app.use(express.static("public"));
+
+//=== Passport Configuration === 
+app.use(require('express-session')({ secret: "Bob is the best dog", resave: false, saveUninitialized: false }));
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+// === Middleware === 
+// -- Adding User session --> every route will pass through this
+app.use(function (req, res, next) {
+    res.locals.currentUser = req.user;
+    next();
+});
+
+// -- Routes
+app.use("/", indexRoutes);
+app.use("/campgrounds", campgroundRoutes);
+app.use("/campgrounds/:id/comments",commentRoutes);
 
 seedDB();
-
-app.get("/", function (req, res) {
-    res.render("landing");
-});
-
-app.get("/campgrounds", function (req, res) {
-    Campground.find({}, function (err, campgrounds) {
-        if (!err && campgrounds) {
-            res.render("campgrounds/index", { campgrounds: campgrounds });
-        }
-    });
-    // res.render("campgrounds", { campgrounds: campgrounds_mocks });
-});
-
-app.post("/campgrounds", function (req, res) {
-    Campground.create({ name: req.body.name, image: req.body.img, description: req.body.description }, function (err, campground) {
-        if (!err && campground) {
-            res.redirect("campgrounds/index");
-        }
-    })
-});
-
-app.get("/campgrounds/new", function (req, res) {
-    res.render("campgrounds/new");
-});
-
-app.get("/campgrounds/:id", function (req, res) {
-    Campground.findById(req.params.id).populate("comments").exec(function (err, campground) {
-        if (!err && campground) {
-            res.render("campgrounds/show", { campground: campground });
-        }
-    });
-});
-
-app.get("/campgrounds/:id/comments/new", function (req, res) {
-    Campground.findById(req.params.id).populate("comments").exec(function (err, campground) {
-        if (!err && campground) {
-            res.render("comments/new", { campground: campground });
-        }
-    });
-});
-
-app.post("/campgrounds/:id/comments/", function (req, res) {
-    Comment.create({ author: req.body.author, text: req.body.text }, function (err, comment) {
-        if (!err && comment) {
-            Campground.findById(req.params.id, function (err, campground) {
-                if (!err && campground) {
-                    campground.comments.push(comment._id);
-                    campground.save(function (err, data) {
-                        if (!err && data) {
-                            res.redirect("/campgrounds/" + campground._id);
-                        }
-                    });
-                }
-            });
-        };
-    });
-})
 
 app.listen(3000, function () {
     console.log("Application started!");

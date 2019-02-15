@@ -6,7 +6,7 @@
             <form class="form" action="/campgrounds/<%= campground._id %>/comments/" method="POST">
                 <div class="d-flex flex-column align-items-center">
                     <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Author</label>
+                        <label for="exampleFormControlTextarea1">Author</label>
                         <input class="form-control" name="author" style="width: 400px" type="text" class="form-control"
                             placeholder="Author">
                     </div>
@@ -15,7 +15,8 @@
                         <textarea name="text" class="form-control" style="width: 400px" id="text" rows="7"></textarea>
                     </div>
                     <div class="container d-flex justify-content-center">
-                        <a href="/campgrounds/<%= campground._id %>" class="btn btn-large btn-primary mr-4">Back to campground</a>
+                        <a href="/campgrounds/<%= campground._id %>" class="btn btn-large btn-primary mr-4">Back to
+                            campground</a>
                         <input class="btn btn-large btn-primary ml-4" type="submit" value="Create new comment">
                     </div>
                 </div>
