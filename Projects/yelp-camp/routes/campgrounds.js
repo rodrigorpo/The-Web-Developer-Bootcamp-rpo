@@ -13,16 +13,20 @@ router.get("/", function (req, res) {
 });
 
 // Add campground view
-router.get("/new", function (req, res) {
+router.get("/new", isLoggedIn, function (req, res) {
     res.render("campgrounds/new");
 });
 
 // Create campground
-router.post("/campgrounds", function (req, res) {
-    req.user
-    Campground.create({ name: req.body.name, image: req.body.img, description: req.body.description }, function (err, campground) {
+router.post("/", isLoggedIn, function (req, res) {
+    const author = {
+        id: req.user._id,
+        username: req.user.username
+    }
+
+    Campground.create({ name: req.body.name, image: req.body.img, description: req.body.description, author }, function (err, campground) {
         if (!err && campground) {
-            res.redirect("campgrounds/index");
+            res.redirect("/campgrounds");
         }
     })
 });

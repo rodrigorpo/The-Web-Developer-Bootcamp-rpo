@@ -14,21 +14,26 @@ router.get("/new", isLoggedIn, function (req, res) {
 
 // Comments new
 router.post("/", isLoggedIn, function (req, res) {
-    Comment.create({ author: req.body.author, text: req.body.text }, function (err, comment) {
-        if (!err && comment) {
-            Campground.findById(req.params.id, function (err, campground) {
-                if (!err && campground) {
-                    campground.comments.push(comment._id);
-                    campground.save(function (err, data) {
-                        if (!err && data) {
-                            res.redirect("/campgrounds/" + campground._id);
-                        }
-                    });
+    Campground.findById(req.params.id, function (err, campground) {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            Comment.create(req.body.comment, function (err, comment) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    comment.author.id = req.user._id;
+                    comment.author.username = req.user.username;
+                    comment.save();
+                    campground.comments.push(comment);
+                    campground.save();
+                    res.redirect('/campgrounds/' + campground._id);
                 }
             });
-        };
+        }
     });
-})
+});
 
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {
