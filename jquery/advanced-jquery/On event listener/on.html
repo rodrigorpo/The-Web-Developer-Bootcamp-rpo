@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Jquery advanced - on</title>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+</head>
+
+<body>
+    <!-- Jquery on() -->
+    <!-- Similtar to addEventListener -->
+
+    <h1><a href="#">Jquery Events</a></h1>
+    <h1>Jquery 2</h1>
+    <h1>Jquery 3</h1>
+
+    <input type="text">
+
+    <button>Don't Click Me</button>
+
+    <script>
+
+        // On add element to all elements that will come on page
+        // A specific event like 'click', it's add only for the select element
+
+        //double click event
+        $('button').on('dblclick', function () {
+            alert("DOUBLE CLICKED!")
+        });
+
+        //drag start event
+        $('a').on('dblclick', function () {
+            alert("DRAG STARTED!")
+        });
+
+        //keypress event
+        $('input[type="text"]').on('keypress', function () {
+            alert("Key press in an input!")
+        });
+
+        //click event
+        $('h1').on('click', function () {
+            $(this).css('color', 'purple');
+        });
+
+        //mouse enter
+        $('button').on('mouseenter', function () {
+            $(this).css('color', 'purple');
+            console.log("mouse enter")
+        });
+
+        $('button').on('mouseleave', function () {
+            $(this).css('color', 'red');
+            console.log("mouse out")
+        });
+
+    </script>
+</body>
+
+</html>

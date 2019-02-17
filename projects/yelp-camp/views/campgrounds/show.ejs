@@ -1,0 +1,54 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <p class="lead">
+                Yelp Camp
+            </p>
+            <div class="list-group">
+                <li class="list-group-item active">Info 1</li>
+                <li class="list-group-item">Info 2</li>
+                <li class="list-group-item">Info 3</li>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="card">
+                <img src="<%=campground.image%>" class="card-img-top img-thumbnail" alt="Responsive image">
+                <div class="card-body">
+                    <h4 class="float-right">$9.00/night</h4>
+                    <h4 class="float-left"><a href="#"><%=campground.name%></a></h4>
+                    <p class="lead mt-5">Submitted by: <%=campground.author.username%></p>
+                    <h5 class="mt-5">
+                        <strong>Description: </strong>
+                        <%=campground.description%>
+                    </h5>
+                </div>
+            </div>
+            <div class="card mt-4">
+                <div class="card-body">
+                    <%campground.comments.forEach(function(comment){ %>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <strong><%= comment.author.username %></strong>
+                            <span class="float-right">10 days ago</span>
+                            <p> <%= comment.text %></p>
+                        </div>
+                    </div>
+                    <%}) %>
+                    <div class="container d-flex justify-content-center">
+                        <div class="">
+                            <a href="/campgrounds" class="btn btn-large btn-primary mr-4">Back to campgrounds</a>
+                        </div>
+                        <div class="">
+                            <a href="/campgrounds/<%=campground._id%>/comments/new"
+                                class="btn btn-large btn-primary mr-4">Add new comment</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>
