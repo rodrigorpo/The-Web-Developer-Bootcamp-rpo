@@ -30,11 +30,13 @@ Say what the step will be
 
 ## Projects inside
 
-* **Rodrigo Pereira** - [Colors Game](https://rodrigorpo.github.io/The-Web-Developer-Bootcamp-rpo/Projects/Colors/)
-* **Rodrigo Pereira** - [Museum Of Candy](https://rodrigorpo.github.io/The-Web-Developer-Bootcamp-rpo/Projects/Museum_Of_Candy)
-* **Rodrigo Pereira** - [Pattern Project](https://rodrigorpo.github.io/The-Web-Developer-Bootcamp-rpo/Projects/Pattern_Project)
-* **Rodrigo Pereira** - [Blog App - Dog's Blog](https://github.com/rodrigorpo/The-Web-Developer-Bootcamp-rpo/tree/master/Projects/blog-app)
-* **Rodrigo Pereira** - [Yelp Camp](https://github.com/rodrigorpo/The-Web-Developer-Bootcamp-rpo/tree/master/Projects/yelp-camp)
+* **Rodrigo Pereira** - [Colors Game](https://rodrigorpo.github.io/The-Web-Developer-Bootcamp-rpo/projects/colors/)
+* **Rodrigo Pereira** - [Museum Of Candy](https://rodrigorpo.github.io/The-Web-Developer-Bootcamp-rpo/projects/museum-of-candy)
+* **Rodrigo Pereira** - [Pattern Project](https://rodrigorpo.github.io/The-Web-Developer-Bootcamp-rpo/projects/pattern-project)
+* **Rodrigo Pereira** - [To-do-list](https://github.com/rodrigorpo/The-Web-Developer-Bootcamp-rpo/projects/to-do-list)
+* **Rodrigo Pereira** - [Blog App - Dog's Blog](https://github.com/rodrigorpo/The-Web-Developer-Bootcamp-rpo/projects/blog-app)
+* **Rodrigo Pereira** - [Yelp Camp](https://github.com/rodrigorpo/The-Web-Developer-Bootcamp-rpo/projects/yelp-camp)
+
 
 ## Authors
 
