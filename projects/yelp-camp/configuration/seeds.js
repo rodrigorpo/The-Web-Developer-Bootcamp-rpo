@@ -8,10 +8,10 @@ const Campground = require('../models/campground');
 const Comment = require('../models/comment')
 
 // === Campgrounds Mock ===
-let data = [{ name: "Salmon Creek", image: "https://souldust.com/wp-content/uploads/2011/05/website_hero_camp16.jpeg", description: "Salmon Creeks description Salmon Creeks description Salmon Creeks description Salmon Creeks description", author: { username: "Rodrigo" } },
-{ name: "Granite Hill", image: "https://r-ec.bstatic.com/images/hotel/max1024x768/647/64748006.jpg", description: "Granite Hill description Granite Hill description Granite Hill description Granite Hill description ", author: { username: "Rodrigo" } },
-{ name: "Mountain Goat's Rest", image: "https://r-ec.bstatic.com/images/hotel/max1024x768/647/64748006.jpg", description: "Mountain Goat's Rest description Mountain Goat's Rest description Mountain Goat's Rest description Mountain Goat's Rest description ", author: { username: "Rodrigo" } },
-{ name: "Small Trailler", image: "https://visitrainier.com/wp-content/uploads/2014/02/Camping-at-White-River-Campground-e1527786151787.jpg", description: "Small Trailler description Small Trailler description Small Trailler description Small Trailler description ", author: { username: "Rodrigo" } }]
+let data = [{ name: "Salmon Creek", image: "https://souldust.com/wp-content/uploads/2011/05/website_hero_camp16.jpeg", description: "Salmon Creeks description Salmon Creeks description Salmon Creeks description Salmon Creeks description", author: { id: mongoose.Types.ObjectId("5c6b7caf2758f7255c3c0a2f"), username: "Rodrigo" } },
+{ name: "Granite Hill", image: "https://r-ec.bstatic.com/images/hotel/max1024x768/647/64748006.jpg", description: "Granite Hill description Granite Hill description Granite Hill description Granite Hill description ", author: { id: mongoose.Types.ObjectId("5c6b7caf2758f7255c3c0a2f"), username: "Rodrigo" } },
+{ name: "Mountain Goat's Rest", image: "https://r-ec.bstatic.com/images/hotel/max1024x768/647/64748006.jpg", description: "Mountain Goat's Rest description Mountain Goat's Rest description Mountain Goat's Rest description Mountain Goat's Rest description ", author: { id: mongoose.Types.ObjectId(), username: "Rodrigo" } },
+{ name: "Small Trailler", image: "https://visitrainier.com/wp-content/uploads/2014/02/Camping-at-White-River-Campground-e1527786151787.jpg", description: "Small Trailler description Small Trailler description Small Trailler description Small Trailler description ", author: { id: mongoose.Types.ObjectId(), username: "Rodrigo" } }]
 
 function seedDB() {
     Campground.remove({}, (err) => {
