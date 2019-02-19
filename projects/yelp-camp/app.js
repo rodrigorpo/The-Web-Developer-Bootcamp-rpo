@@ -3,7 +3,8 @@ const express = require('express'),
     app = express(),
     bodyParser = require('body-parser'),
     passport = require('passport'),
-    LocalStrategy = require('passport-local');
+    LocalStrategy = require('passport-local'),
+    methodOverride = require('method-override');
 
 // === Importing routes ===
 const indexRoutes = require('./routes/index');
@@ -21,6 +22,7 @@ const seedDB = require('./configuration/seeds');
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public")); // referes where the script is running
+app.use(methodOverride("_method"));
 // app.use(express.static("public"));
 
 //=== Passport Configuration === 
@@ -41,7 +43,7 @@ app.use(function (req, res, next) {
 // -- Routes
 app.use("/", indexRoutes);
 app.use("/campgrounds", campgroundRoutes);
-app.use("/campgrounds/:id/comments",commentRoutes);
+app.use("/campgrounds/:id/comments", commentRoutes);
 
 seedDB();
 
