@@ -32,7 +32,7 @@ function seedDB() {
                                 text: `This place is great, but I wish there was internet. Campground comment: ${index}`,
                                 author: {
                                     username: "Rodrigo",
-                                    _id: "5c66365e618f4c176899a2a8"
+                                    id: "5c66365e618f4c176899a2a8"
                                 }
                             }, (err, comment) => {
                                 if (!err && campground) {
