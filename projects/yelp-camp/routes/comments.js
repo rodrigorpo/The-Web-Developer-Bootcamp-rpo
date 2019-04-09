@@ -1,10 +1,11 @@
-const express = require("express"),
-    router = express.Router({ mergeParams: true }),
-    Campground = require('../models/campground'),
-    Comment = require('../models/comment');
+const express = require("express");
+const router = express.Router({ mergeParams: true });
+const Campground = require('../models/campground');
+const Comment = require('../models/comment');
+const Middleware = require('../middleware');
 
 // Add comments view
-router.get("/new", isLoggedIn, function (req, res) {
+router.get("/new", Middleware.isLoggedIn, function (req, res) {
     Campground.findById(req.params.id).populate("comments").exec(function (err, campground) {
         if (!err && campground) {
             res.render("comments/new", { campground: campground });
@@ -13,7 +14,7 @@ router.get("/new", isLoggedIn, function (req, res) {
 });
 
 // Comments new
-router.post("/", isLoggedIn, function (req, res) {
+router.post("/", Middleware.isLoggedIn, function (req, res) {
     Campground.findById(req.params.id, function (err, campground) {
         if (err) {
             console.log(err);
@@ -21,6 +22,7 @@ router.post("/", isLoggedIn, function (req, res) {
         else {
             Comment.create(req.body.comment, function (err, comment) {
                 if (err) {
+                    req.flash("error", "Something went wrong!")
                     console.log(err);
                 } else {
                     comment.author.id = req.user._id;
@@ -37,7 +39,7 @@ router.post("/", isLoggedIn, function (req, res) {
 
 // Comments edit
 
-router.get("/:comment_id/edit", checkCommentOwnership, function (req, res) {
+router.get("/:comment_id/edit", Middleware.checkCommentOwnership, function (req, res) {
     Comment.findById(req.params.comment_id, function (err, foundComment) {
         if (err) {
             res.redirect("back");
@@ -51,7 +53,7 @@ router.get("/:comment_id/edit", checkCommentOwnership, function (req, res) {
     });
 });
 
-router.put("/:comment_id/", checkCommentOwnership, function (req, res) {
+router.put("/:comment_id/", Middleware.checkCommentOwnership, function (req, res) {
     Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function (err, updatedComment) {
         if (err) {
             res.redirect("back");
@@ -61,7 +63,7 @@ router.put("/:comment_id/", checkCommentOwnership, function (req, res) {
     });
 });
 
-router.delete("/:comment_id/", checkCommentOwnership, function (req, res) {
+router.delete("/:comment_id/", Middleware.checkCommentOwnership, function (req, res) {
     Comment.findByIdAndRemove(req.params.comment_id, req.body.comment, function (err, updatedComment) {
         if (err) {
             res.redirect("back");
@@ -70,31 +72,4 @@ router.delete("/:comment_id/", checkCommentOwnership, function (req, res) {
         }
     });
 });
-
-function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()) {
-        return next();
-    }
-    res.redirect("/login");
-}
-
-function checkCommentOwnership(req, res, next) {
-
-    if (req.isAuthenticated()) {
-        Comment.findById(req.params.comment_id, function (err, foundComment) {
-            if (err) {
-                res.redirect("back");
-            } else {
-                if (foundComment.author.id.equals(req.user._id)) {
-                    next();
-                } else {
-                    res.redirect("back");
-                }
-            }
-        });
-    } else {
-        res.redirect("back")
-    }
-}
-
 module.exports = router;
